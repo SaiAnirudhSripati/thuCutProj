@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'list' %}">Categories</a></li>
+  <li class="breadcrumb-item active">{{ cat_item.cat_name }}</li>
+{% endblock %}
+
+
+{% block content%}
+{% if lists|length > 0 %}
+    <a href="{% url 'create_item' cat_item.id %}"> Create item</a>
+    <br>
+
+        <table class="table">
+
+        <thead class="thead-light">
+            <tr>
+              <th class="largeCell" > Item</th>
+              <th>View</th>
+              <th>Delete</th>
+            </tr>
+        </thead>
+
+
+              {% for list in lists %}
+                <tbody>
+                  <tr>
+                      <td>
+                        {{ list.list_name }} <br>
+                      </td>
+
+
+                      <td class="align-middle">
+                          <a href="{% url 'detail' list.id %}">view</a>
+
+                      </td>
+                      <td class="align-middle">
+                          <a href="{% url 'delete' list.id %}">delete</a>
+                      </td>
+                  </tr>
+              {% endfor %}
+
+          </tbody>
+        </table>
+  {%else%}
+  <br>
+  <div class="container">
+    No items present in this cateogory. Please <a href="{% url 'create_item' cat_item.id %}"> create an item</a>
+    {%endif%}
+  </div>
+
+  </body>
+</html>
+{% endblock %}

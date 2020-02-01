@@ -1,0 +1,38 @@
+
+
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">Categories</li>
+
+{% endblock %}
+
+
+{% block content %}
+
+<table class="table">
+
+<thead class="thead-light">
+    <tr>
+      <th >Category</th>
+
+    </tr>
+</thead>
+
+
+      {% for cat in categories %}
+        <tbody>
+          <tr>
+              <td>
+
+                <a href="{% url 'list_items' cat.id %}">{{ cat.cat_name }}</a>
+                 <br>
+                <small class="text-muted d-block">{{ cat.cat_description }}</small>
+              </td>
+
+          </tr>
+      {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

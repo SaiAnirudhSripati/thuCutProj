@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block title%}
+Create new list item
+{%endblock%}
+{% load bootstrap4 %}
+
+
+{% block breadcrumb%}
+<li class="breadcrumb-item"><a href="{% url 'list' %}">Categories</a></li>
+<li class="breadcrumb-item"><a href="{% url 'list_items' cat_id %}">{{ cat_name }}</a></li>
+<li class="breadcrumb-item active">new list item</li>
+
+{% endblock%}
+
+
+
+{% block content %}
+<form class="form-group"  method="post" novalidate>
+
+
+{% csrf_token %}
+{% bootstrap_form form %}
+
+ <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% endblock %}

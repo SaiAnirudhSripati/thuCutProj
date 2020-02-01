@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block title%}
+List detail
+{%endblock%}
+{% load bootstrap4 %}
+
+
+{% block breadcrumb%}
+<li class="breadcrumb-item"><a href="{% url 'list' %}">Categories</a></li>
+<li class="breadcrumb-item"><a href="{% url 'list_items' list.cat_id %}">{{cat_item.cat_name}}</a></li>
+<li class="breadcrumb-item active">{{list.list_name}}</li>
+
+{% endblock%}
+
+
+
+{% block content %}
+<div class="container">
+  <p class="lead">
+    {{list.list_desc}}
+  </p>
+</div>
+
+{% endblock %}
