@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <script>
       function deleteList(listUrl){
-        if(confirm("Are you sure you want to delte?")){
+        if(confirm("Are you sure you want to delete this item?")){
           const Http = new XMLHttpRequest();
           const url=listUrl;
           Http.open("GET", url);
