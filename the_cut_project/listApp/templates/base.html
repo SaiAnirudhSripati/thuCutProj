@@ -4,6 +4,19 @@
     <meta charset="utf-8">
     <title>{% block title %}Cars list{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script>
+      function deleteList(listUrl){
+        if(confirm("Are you sure you want to delte?")){
+          const Http = new XMLHttpRequest();
+          const url=listUrl;
+          Http.open("GET", url);
+          Http.send();
+        }
+
+
+      }
+    </script>
+
     <style>
       .largeCell{
         width:80%;

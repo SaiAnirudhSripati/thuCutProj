@@ -31,11 +31,13 @@ def list(request):
 def list_items(request,pk):
     list_items=List.objects.filter(cat_id=pk)
     cat_item=Categories.objects.get(id=pk)
-    list_views_count=list_items[0].list_views
+    if list_items:
+        list_views_count=list_items[0].list_views
 
-    page_visits=list_items[0].list_views
-    List.objects.filter(cat_id=pk).update(list_views=list_views_count+1)
-
+        page_visits=list_items[0].list_views
+        List.objects.filter(cat_id=pk).update(list_views=list_views_count+1)
+    else:
+        page_visits=0
 
     return render(request,'list_items.html',{'lists':list_items,'cat_item':cat_item,'page_visits':page_visits})
 
@@ -58,9 +60,6 @@ def create_item(request,pk):
         form = NewListItemForm()
         #breakpoint()
     return render(request,'create_item.html',{'cat_id':pk,'cat_name':category.cat_name,'form':form,'page_visits':view_count})
-
-
-
 
 def detail(request,pk):
 

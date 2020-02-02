@@ -34,7 +34,7 @@
 
                       </td>
                       <td class="align-middle">
-                          <a href="{% url 'delete' list.id %}">delete</a>
+                          <a href="" onclick=deleteList("{% url 'delete' list.id %}")>delete</a>
                       </td>
                   </tr>
               {% endfor %}
